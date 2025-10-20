@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a static HTML website for Batmex Group, a construction and logistics company. The project consists of a single, self-contained HTML file (`main.html`) with embedded CSS and JavaScript for a modern, responsive landing page.
+This is a static HTML website for Falibra Group, a construction and logistics company. The project consists of a single, self-contained HTML file (`main.html`) with embedded CSS and JavaScript for a modern, responsive landing page.
 
 ## Architecture
 
