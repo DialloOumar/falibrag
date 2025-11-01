@@ -2,18 +2,20 @@
 const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 const navLinks = document.querySelector('.nav-links');
 
-mobileMenuBtn.addEventListener('click', () => {
-    mobileMenuBtn.classList.toggle('active');
-    navLinks.classList.toggle('active');
-});
-
-// Close mobile menu when clicking a link
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        mobileMenuBtn.classList.remove('active');
-        navLinks.classList.remove('active');
+if (mobileMenuBtn && navLinks) {
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileMenuBtn.classList.toggle('active');
+        navLinks.classList.toggle('active');
     });
-});
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenuBtn.classList.remove('active');
+            navLinks.classList.remove('active');
+        });
+    });
+}
 
 // Smooth scroll for navigation
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -88,7 +90,7 @@ let currentLanguage = 'en';
 const languageDropdown = document.getElementById('languageDropdown');
 const languageButton = document.getElementById('languageButton');
 const languageOptions = document.getElementById('languageOptions');
-const currentLangSpan = languageButton.querySelector('.current-lang');
+const currentLangSpan = languageButton ? languageButton.querySelector('.current-lang') : null;
 
 // Language translations for form validation messages
 const translations = {
@@ -110,12 +112,14 @@ const translations = {
 
 function switchLanguage(newLanguage) {
     currentLanguage = newLanguage;
-    
+
     // Update html lang attribute for CSS targeting
     document.documentElement.setAttribute('lang', currentLanguage);
-    
+
     // Update current language display
-    currentLangSpan.textContent = currentLanguage.toUpperCase();
+    if (currentLangSpan) {
+        currentLangSpan.textContent = currentLanguage.toUpperCase();
+    }
     
     // Update all elements with data attributes
     const elementsToTranslate = document.querySelectorAll('[data-en][data-fr]');
@@ -134,29 +138,37 @@ function switchLanguage(newLanguage) {
     
     // Store language preference
     localStorage.setItem('preferredLanguage', currentLanguage);
-    
+
     // Close dropdown
-    languageDropdown.classList.remove('open');
+    if (languageDropdown) {
+        languageDropdown.classList.remove('open');
+    }
 }
 
 // Toggle dropdown
-languageButton.addEventListener('click', (e) => {
-    e.stopPropagation();
-    languageDropdown.classList.toggle('open');
-});
+if (languageButton && languageDropdown) {
+    languageButton.addEventListener('click', (e) => {
+        e.stopPropagation();
+        languageDropdown.classList.toggle('open');
+    });
+}
 
 // Handle language option clicks
-languageOptions.addEventListener('click', (e) => {
-    if (e.target.classList.contains('language-option')) {
-        const selectedLang = e.target.getAttribute('data-lang');
-        switchLanguage(selectedLang);
-    }
-});
+if (languageOptions) {
+    languageOptions.addEventListener('click', (e) => {
+        if (e.target.classList.contains('language-option')) {
+            const selectedLang = e.target.getAttribute('data-lang');
+            switchLanguage(selectedLang);
+        }
+    });
+}
 
 // Close dropdown when clicking outside
-document.addEventListener('click', () => {
-    languageDropdown.classList.remove('open');
-});
+if (languageDropdown) {
+    document.addEventListener('click', () => {
+        languageDropdown.classList.remove('open');
+    });
+}
 
 // Initialize language from localStorage or default to English
 const savedLanguage = localStorage.getItem('preferredLanguage');
@@ -237,8 +249,9 @@ function cycleMobilePartners() {
         // Show mobile deck, hide desktop cards
         if (mobileDeck) mobileDeck.style.display = 'block';
         if (desktopRow) desktopRow.style.display = 'none';
-        
+
         function cycleDeck() {
+            if (!mobileDeck) return;
             const cards = Array.from(mobileDeck.querySelectorAll('.deck-card'));
             if (cards.length < 3) return;
             
@@ -272,10 +285,11 @@ function cycleMobilePartners() {
         }
         
         // Start the cycling
-        partnerInterval = setInterval(cycleDeck, 4000);
-        
-        // Add click handlers for manual cycling
-        const cards = mobileDeck.querySelectorAll('.deck-card');
+        if (mobileDeck) {
+            partnerInterval = setInterval(cycleDeck, 4000);
+
+            // Add click handlers for manual cycling
+            const cards = mobileDeck.querySelectorAll('.deck-card');
         cards.forEach(card => {
             card.addEventListener('click', () => {
                 // Only allow clicks on the front card
@@ -287,7 +301,7 @@ function cycleMobilePartners() {
                     
                     // Trigger cycle
                     cycleDeck();
-                    
+
                     // Restart auto interval after a delay
                     setTimeout(() => {
                         partnerInterval = setInterval(cycleDeck, 4000);
@@ -295,6 +309,7 @@ function cycleMobilePartners() {
                 }
             });
         });
+        }
     } else {
         // Show desktop cards, hide mobile deck
         if (mobileDeck) mobileDeck.style.display = 'none';
@@ -305,6 +320,8 @@ function cycleMobilePartners() {
 // Actualities Carousel functionality
 function initActualitiesCarousel() {
     const carousel = document.getElementById('actualitiesCarousel');
+    if (!carousel) return; // Exit if carousel doesn't exist on this page
+
     const items = carousel.querySelectorAll('.carousel-item');
     const indicators = document.querySelectorAll('.indicator');
     const prevBtn = document.getElementById('carouselPrev');
@@ -428,8 +445,46 @@ function initActualitiesCarousel() {
     startAutoSlide();
 }
 
+// Project Filter functionality
+function initProjectFilters() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    if (filterButtons.length === 0 || projectCards.length === 0) return;
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+
+            // Add active class to clicked button
+            button.classList.add('active');
+
+            // Get filter value
+            const filterValue = button.getAttribute('data-filter');
+
+            // Filter project cards
+            projectCards.forEach(card => {
+                if (filterValue === 'all') {
+                    card.style.display = 'block';
+                    card.style.animation = 'fadeIn 0.5s ease';
+                } else {
+                    const cardCategory = card.getAttribute('data-category');
+                    if (cardCategory === filterValue) {
+                        card.style.display = 'block';
+                        card.style.animation = 'fadeIn 0.5s ease';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        });
+    });
+}
+
 // Lightbox Gallery functionality
 function initLightboxGallery() {
+    console.log('=== Initializing Lightbox Gallery ===');
     const modal = document.getElementById('lightboxModal');
     const modalImage = document.getElementById('lightboxImage');
     const modalCounter = document.getElementById('lightboxCounter');
@@ -437,22 +492,27 @@ function initLightboxGallery() {
     const prevBtn = document.getElementById('lightboxPrev');
     const nextBtn = document.getElementById('lightboxNext');
     const thumbnailGrid = document.getElementById('lightboxThumbnails');
-    
+
+    console.log('Modal element:', modal);
+    console.log('Gallery items found:', document.querySelectorAll('.gallery-item').length);
+
     let currentGallery = [];
     let currentIndex = 0;
     let currentGalleryName = '';
     
     // Function to open lightbox with specific image
     function openLightbox(galleryName, imageIndex) {
+        console.log('Opening lightbox for gallery:', galleryName, 'index:', imageIndex);
         // Get all images from the same gallery
         currentGallery = Array.from(document.querySelectorAll(`[data-gallery="${galleryName}"]`));
+        console.log('Found', currentGallery.length, 'images in gallery');
         currentIndex = imageIndex;
         currentGalleryName = galleryName;
-        
+
         // Show modal
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
-        
+
         // Update image and counter
         updateLightboxImage();
         updateLightboxThumbnails();
@@ -543,6 +603,9 @@ function initLightboxGallery() {
     // Event listeners for gallery items
     document.addEventListener('click', (e) => {
         if (e.target.classList.contains('gallery-item')) {
+            console.log('Gallery item clicked!', e.target);
+            console.log('Gallery name:', e.target.dataset.gallery);
+            console.log('Image index:', e.target.dataset.index);
             e.preventDefault();
             const galleryName = e.target.dataset.gallery;
             const imageIndex = parseInt(e.target.dataset.index);
@@ -610,10 +673,11 @@ function initLightboxGallery() {
     }
 }
 
-// Initialize mobile partner cycling, carousel, and lightbox after DOM is loaded
+// Initialize mobile partner cycling, carousel, lightbox, and filters after DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     cycleMobilePartners();
     initActualitiesCarousel();
+    initProjectFilters();
     initLightboxGallery();
 });
 window.addEventListener('resize', cycleMobilePartners);
