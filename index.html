@@ -132,6 +132,16 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <!-- Video Background -->
+        <div class="hero-video-background">
+            <video autoplay muted loop playsinline id="heroVideo" class="hero-video">
+                <source src="hero-video.mp4" type="video/mp4">
+                <source src="hero-video.webm" type="video/webm">
+                <!-- Fallback for browsers that don't support video -->
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+
         <div class="hero-content">
             <div class="hero-text">
                 <h1>
@@ -148,19 +158,19 @@
             <div class="hero-visual">
                 <div class="visual-grid">
                     <div class="stat-card">
-                        <div class="stat-number">500+</div>
+                        <div class="stat-number" data-target="500" data-suffix="+">500+</div>
                         <div class="stat-label" data-en="Projects Completed" data-fr="Projets Complétés">Projects Completed</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-number">24/7</div>
+                        <div class="stat-number" data-target="24" data-suffix="/7">24/7</div>
                         <div class="stat-label" data-en="Digital Support" data-fr="Support Numérique">Digital Support</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-number">98%</div>
+                        <div class="stat-number" data-target="98" data-suffix="%">98%</div>
                         <div class="stat-label" data-en="Client Satisfaction" data-fr="Satisfaction Client">Client Satisfaction</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-number">7+</div>
+                        <div class="stat-number" data-target="7" data-suffix="+">7+</div>
                         <div class="stat-label" data-en="Years Experience" data-fr="Années d'Expérience">Years Experience</div>
                     </div>
                 </div>
@@ -202,6 +212,232 @@
         </div>
     </section>
 
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-us">
+        <div class="section-header">
+            <h2><span data-en="Why Choose" data-fr="Pourquoi Choisir">Why Choose</span> <span class="gradient-text" data-en="Falibra Group" data-fr="Falibra Group">Falibra Group</span></h2>
+            <p data-en="Your trusted partner in construction excellence with proven expertise and commitment to quality" data-fr="Votre partenaire de confiance dans l'excellence de la construction avec une expertise éprouvée et un engagement envers la qualité">Your trusted partner in construction excellence with proven expertise and commitment to quality</p>
+        </div>
+
+        <div class="why-choose-grid">
+            <div class="why-card">
+                <div class="why-icon-container">
+                    <div class="why-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7L12 12L22 7L12 2Z"/>
+                            <path d="M2 17L12 22L22 17"/>
+                            <path d="M2 12L12 17L22 12"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3 data-en="15+ Years Experience" data-fr="15+ Ans d'Expérience">15+ Years Experience</h3>
+                <p data-en="Over a decade of proven excellence in construction and development across Guinea" data-fr="Plus d'une décennie d'excellence éprouvée dans la construction et le développement à travers la Guinée">Over a decade of proven excellence in construction and development across Guinea</p>
+            </div>
+
+            <div class="why-card">
+                <div class="why-icon-container">
+                    <div class="why-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 11L12 14L22 4"/>
+                            <path d="M21 12V19C21 20.1 20.1 21 19 21H5C3.9 21 3 20.1 3 19V5C3 3.9 3.9 3 5 3H16"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3 data-en="Quality Assurance" data-fr="Assurance Qualité">Quality Assurance</h3>
+                <p data-en="Rigorous quality control and international standards compliance on every project" data-fr="Contrôle qualité rigoureux et conformité aux normes internationales sur chaque projet">Rigorous quality control and international standards compliance on every project</p>
+            </div>
+
+            <div class="why-card">
+                <div class="why-icon-container">
+                    <div class="why-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6V12L16 14"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3 data-en="On-Time Delivery" data-fr="Livraison à Temps">On-Time Delivery</h3>
+                <p data-en="95% of our projects are completed on schedule with meticulous planning and execution" data-fr="95% de nos projets sont terminés dans les délais avec une planification et une exécution méticuleuses">95% of our projects are completed on schedule with meticulous planning and execution</p>
+            </div>
+
+            <div class="why-card">
+                <div class="why-icon-container">
+                    <div class="why-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7V17L12 22L22 17V7L12 2Z"/>
+                            <path d="M12 22V12"/>
+                            <path d="M2 7L12 12L22 7"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3 data-en="Innovation & Technology" data-fr="Innovation et Technologie">Innovation & Technology</h3>
+                <p data-en="Cutting-edge construction techniques and digital solutions including BIM modeling" data-fr="Techniques de construction de pointe et solutions numériques incluant la modélisation BIM">Cutting-edge construction techniques and digital solutions including BIM modeling</p>
+            </div>
+
+            <div class="why-card">
+                <div class="why-icon-container">
+                    <div class="why-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"/>
+                            <path d="M12 8V12"/>
+                            <circle cx="12" cy="16" r="0.5" fill="currentColor"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3 data-en="Safety First" data-fr="Sécurité d'Abord">Safety First</h3>
+                <p data-en="Zero-compromise safety standards with comprehensive training and equipment" data-fr="Normes de sécurité sans compromis avec formation complète et équipement">Zero-compromise safety standards with comprehensive training and equipment</p>
+            </div>
+
+            <div class="why-card">
+                <div class="why-icon-container">
+                    <div class="why-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21V19C17 16.79 15.21 15 13 15H5C2.79 15 1 16.79 1 19V21"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21V19C23 17.13 21.87 15.57 20 15"/>
+                            <path d="M16 3.13C17.87 3.57 19 5.13 19 7C19 8.87 17.87 10.43 16 10.87"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3 data-en="Expert Team" data-fr="Équipe Experte">Expert Team</h3>
+                <p data-en="Certified professionals and skilled craftsmen dedicated to excellence" data-fr="Professionnels certifiés et artisans qualifiés dédiés à l'excellence">Certified professionals and skilled craftsmen dedicated to excellence</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Timeline Section -->
+    <section class="process-timeline">
+        <div class="section-header">
+            <h2><span data-en="How We" data-fr="Comment Nous">How We</span> <span class="gradient-text" data-en="Work" data-fr="Travaillons">Work</span></h2>
+            <p data-en="Our proven 4-step process ensures excellence from concept to completion" data-fr="Notre processus éprouvé en 4 étapes garantit l'excellence du concept à l'achèvement">Our proven 4-step process ensures excellence from concept to completion</p>
+        </div>
+
+        <div class="timeline-container">
+            <div class="timeline-line"></div>
+
+            <div class="timeline-step">
+                <div class="step-number">01</div>
+                <div class="step-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21V19C17 16.79 15.21 15 13 15H5C2.79 15 1 16.79 1 19V21"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M23 21V19C23 17.13 21.87 15.57 20 15"/>
+                        <path d="M16 3.13C17.87 3.57 19 5.13 19 7C19 8.87 17.87 10.43 16 10.87"/>
+                    </svg>
+                </div>
+                <div class="step-content">
+                    <h3 data-en="Consultation & Planning" data-fr="Consultation et Planification">Consultation & Planning</h3>
+                    <p data-en="We meet with you to understand your vision, requirements, and goals. Our team conducts site analysis and develops initial project scope." data-fr="Nous vous rencontrons pour comprendre votre vision, vos exigences et vos objectifs. Notre équipe effectue une analyse du site et développe la portée initiale du projet.">We meet with you to understand your vision, requirements, and goals. Our team conducts site analysis and develops initial project scope.</p>
+                </div>
+            </div>
+
+            <div class="timeline-step">
+                <div class="step-number">02</div>
+                <div class="step-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z"/>
+                        <path d="M14 2V8H20"/>
+                        <path d="M16 13H8"/>
+                        <path d="M16 17H8"/>
+                        <path d="M10 9H8"/>
+                    </svg>
+                </div>
+                <div class="step-content">
+                    <h3 data-en="Design & Approval" data-fr="Conception et Approbation">Design & Approval</h3>
+                    <p data-en="Our architects create detailed blueprints and 3D models using BIM technology. We handle all permits and ensure design approval before breaking ground." data-fr="Nos architectes créent des plans détaillés et des modèles 3D en utilisant la technologie BIM. Nous gérons tous les permis et garantissons l'approbation de la conception avant de commencer.">Our architects create detailed blueprints and 3D models using BIM technology. We handle all permits and ensure design approval before breaking ground.</p>
+                </div>
+            </div>
+
+            <div class="timeline-step">
+                <div class="step-number">03</div>
+                <div class="step-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2"/>
+                        <path d="M3 9H21"/>
+                        <path d="M9 21V9"/>
+                    </svg>
+                </div>
+                <div class="step-content">
+                    <h3 data-en="Construction & Execution" data-fr="Construction et Exécution">Construction & Execution</h3>
+                    <p data-en="Expert teams begin construction with strict quality control and safety standards. We provide regular updates and maintain transparent communication throughout." data-fr="Les équipes d'experts commencent la construction avec un contrôle qualité strict et des normes de sécurité. Nous fournissons des mises à jour régulières et maintenons une communication transparente.">Expert teams begin construction with strict quality control and safety standards. We provide regular updates and maintain transparent communication throughout.</p>
+                </div>
+            </div>
+
+            <div class="timeline-step">
+                <div class="step-number">04</div>
+                <div class="step-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 6L9 17L4 12"/>
+                    </svg>
+                </div>
+                <div class="step-content">
+                    <h3 data-en="Delivery & Support" data-fr="Livraison et Support">Delivery & Support</h3>
+                    <p data-en="Final inspections, handover, and comprehensive documentation. We provide ongoing support and maintenance services to ensure long-term success." data-fr="Inspections finales, remise et documentation complète. Nous fournissons un support continu et des services de maintenance pour garantir le succès à long terme.">Final inspections, handover, and comprehensive documentation. We provide ongoing support and maintenance services to ensure long-term success.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Activities Preview -->
+    <section class="activities-preview">
+        <div class="section-header">
+            <h2><span data-en="Latest" data-fr="Dernières">Latest</span> <span class="gradient-text" data-en="Activities" data-fr="Activités">Activities</span></h2>
+            <p data-en="Recent milestones and achievements showcasing our ongoing commitment to excellence" data-fr="Jalons récents et réalisations démontrant notre engagement continu envers l'excellence">Recent milestones and achievements showcasing our ongoing commitment to excellence</p>
+        </div>
+
+        <div class="activities-grid">
+            <!-- Activity 1 -->
+            <div class="activity-card">
+                <div class="activity-image">
+                    <img src="activitity_1/image1.jpeg" alt="PPP Agreement Signing">
+                    <div class="activity-badge">
+                        <span data-en="December 2024" data-fr="Décembre 2024">December 2024</span>
+                    </div>
+                </div>
+                <div class="activity-content">
+                    <div class="activity-meta">
+                        <span class="activity-category" data-en="Partnership Agreement" data-fr="Convention de Partenariat">Partnership Agreement</span>
+                        <span class="activity-photos">📸 6 Photos</span>
+                    </div>
+                    <h3 data-en="Public-Private Partnership for Government Printing Press" data-fr="Partenariat Public-Privé pour l'Imprimerie Gouvernementale">Public-Private Partnership for Government Printing Press</h3>
+                    <p data-en="Falilou Diallo, CEO of Falibra Group, signed the PPP Agreement for construction and financing of the Government Printing Press in presence of key government ministers." data-fr="Falilou Diallo, PDG de Falibra Group, signe la Convention PPP pour la construction et le financement de l'Imprimerie du Gouvernement en présence de ministres clés.">Falilou Diallo, CEO of Falibra Group, signed the PPP Agreement for construction and financing of the Government Printing Press in presence of key government ministers.</p>
+                    <div class="activity-tags">
+                        <span class="tag">🏛️ <span data-en="Government" data-fr="Gouvernement">Government</span></span>
+                        <span class="tag">🤝 <span data-en="PPP" data-fr="PPP">PPP</span></span>
+                        <span class="tag">📰 <span data-en="Printing" data-fr="Imprimerie">Printing</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity 2 -->
+            <div class="activity-card">
+                <div class="activity-image">
+                    <img src="activitity_2/image1.jpeg" alt="Construction Launch">
+                    <div class="activity-badge">
+                        <span data-en="January 2025" data-fr="Janvier 2025">January 2025</span>
+                    </div>
+                </div>
+                <div class="activity-content">
+                    <div class="activity-meta">
+                        <span class="activity-category" data-en="Infrastructure Development" data-fr="Développement Infrastructure">Infrastructure Development</span>
+                        <span class="activity-photos">📸 7 Photos</span>
+                    </div>
+                    <h3 data-en="Government Printing House Construction Launch" data-fr="Lancement Construction Imprimerie Gouvernementale">Government Printing House Construction Launch</h3>
+                    <p data-en="Construction launch at Koloma, Conakry. This 12-month national sovereignty project includes administrative buildings, production center, and authentication laboratory." data-fr="Lancement de construction à Koloma, Conakry. Ce projet de souveraineté nationale de 12 mois comprend bâtiments administratifs, centre de production et laboratoire.">Construction launch at Koloma, Conakry. This 12-month national sovereignty project includes administrative buildings, production center, and authentication laboratory.</p>
+                    <div class="activity-tags">
+                        <span class="tag">🏗️ <span data-en="Large Scale" data-fr="Grande Échelle">Large Scale</span></span>
+                        <span class="tag">⏱️ <span data-en="On Time" data-fr="À Temps">On Time</span></span>
+                        <span class="tag">✅ <span data-en="Quality" data-fr="Qualité">Quality</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="activities-cta">
+            <a href="media.html" class="btn-primary" data-en="View All Activities" data-fr="Voir Toutes les Activités">View All Activities</a>
+        </div>
+    </section>
+
     <!-- Featured Projects -->
     <section class="featured-projects">
         <div class="section-header">
@@ -211,7 +447,7 @@
         <div class="projects-preview">
             <div class="project-preview-card">
                 <div class="project-image">
-                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="CMIS Project">
+                    <img src="Projects/cmis_mamou/image1.jpeg" alt="CMIS Project">
                 </div>
                 <div class="project-content">
                     <h3 data-en="Mobile Intervention and Security Companies (CMIS)" data-fr="Compagnies Mobiles d'Intervention et de Sécurité (CMIS)">Mobile Intervention and Security Companies (CMIS)</h3>
@@ -221,7 +457,7 @@
             </div>
             <div class="project-preview-card">
                 <div class="project-image">
-                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Government Printing Press">
+                    <img src="Projects/government_printing_press/image1.jpg" alt="Government Printing Press">
                 </div>
                 <div class="project-content">
                     <h3 data-en="Government Printing Press" data-fr="Imprimerie du Gouvernement Guinéen">Government Printing Press</h3>
@@ -229,9 +465,131 @@
                     <p data-en="Critical infrastructure project for national administrative operations." data-fr="Projet d'infrastructure critique pour les opérations administratives nationales.">Critical infrastructure project for national administrative operations.</p>
                 </div>
             </div>
+            <div class="project-preview-card">
+                <div class="project-image">
+                    <img src="Projects/voile_de_la_mariee/image1.jpg" alt="Voile de la Mariée Tourism Project">
+                </div>
+                <div class="project-content">
+                    <h3 data-en="Voile de la Mariée Site Rehabilitation" data-fr="Réhabilitation du Site du Voile de la Mariée">Voile de la Mariée Site Rehabilitation</h3>
+                    <p class="project-type" data-en="Tourism & Heritage" data-fr="Tourisme et Patrimoine">Tourism & Heritage</p>
+                    <p data-en="Rehabilitation of the iconic Voile de la Mariée waterfall site in Kindia region." data-fr="Réhabilitation du célèbre site de la cascade du Voile de la Mariée dans la région de Kindia.">Rehabilitation of the iconic Voile de la Mariée waterfall site in Kindia region.</p>
+                </div>
+            </div>
         </div>
         <div class="projects-cta">
             <a href="projects.html" class="btn-secondary" data-en="View All Projects" data-fr="Voir Tous les Projets">View All Projects</a>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-home">
+        <div class="section-header">
+            <h2><span data-en="What Our" data-fr="Ce Que Nos">What Our</span> <span class="gradient-text" data-en="Clients Say" data-fr="Clients Disent">Clients Say</span></h2>
+            <p data-en="Trusted by government institutions and leading organizations across Guinea" data-fr="Approuvé par les institutions gouvernementales et les principales organisations en Guinée">Trusted by government institutions and leading organizations across Guinea</p>
+        </div>
+
+        <div class="testimonials-grid-home">
+            <div class="testimonial-card-home">
+                <div class="testimonial-header">
+                    <div class="client-avatar">
+                        <div class="avatar-circle">MI</div>
+                    </div>
+                    <div class="client-info">
+                        <h4 data-en="Ministry of Interior" data-fr="Ministère de l'Intérieur">Ministry of Interior</h4>
+                        <p class="client-position" data-en="Security Infrastructure Division" data-fr="Division Infrastructure de Sécurité">Security Infrastructure Division</p>
+                        <div class="rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-content">
+                    <div class="quote-icon">"</div>
+                    <p data-en="Falibra Group's expertise in government infrastructure projects is unmatched. Their work on the CMIS facilities exceeded our expectations in both quality and timeline. Professional team, exceptional results." data-fr="L'expertise de Falibra Group dans les projets d'infrastructure gouvernementale est inégalée. Leur travail sur les installations CMIS a dépassé nos attentes en termes de qualité et de délais. Équipe professionnelle, résultats exceptionnels.">Falibra Group's expertise in government infrastructure projects is unmatched. Their work on the CMIS facilities exceeded our expectations in both quality and timeline. Professional team, exceptional results.</p>
+                </div>
+            </div>
+
+            <div class="testimonial-card-home">
+                <div class="testimonial-header">
+                    <div class="client-avatar">
+                        <div class="avatar-circle">MD</div>
+                    </div>
+                    <div class="client-info">
+                        <h4>Dr. Mamadou Diallo</h4>
+                        <p class="client-position" data-en="Director, Donka Orthopedic Center" data-fr="Directeur, Centre Orthopédique de Donka">Director, Donka Orthopedic Center</p>
+                        <div class="rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-content">
+                    <div class="quote-icon">"</div>
+                    <p data-en="The rehabilitation of our orthopedic center was handled with exceptional professionalism. Falibra Group understood the unique requirements of healthcare infrastructure and delivered beyond expectations." data-fr="La réhabilitation de notre centre orthopédique a été gérée avec un professionnalisme exceptionnel. Falibra Group a compris les exigences uniques de l'infrastructure de soins de santé et a livré au-delà des attentes.">The rehabilitation of our orthopedic center was handled with exceptional professionalism. Falibra Group understood the unique requirements of healthcare infrastructure and delivered beyond expectations.</p>
+                </div>
+            </div>
+
+            <div class="testimonial-card-home">
+                <div class="testimonial-header">
+                    <div class="client-avatar">
+                        <div class="avatar-circle">MT</div>
+                    </div>
+                    <div class="client-info">
+                        <h4 data-en="Ministry of Tourism" data-fr="Ministère du Tourisme">Ministry of Tourism</h4>
+                        <p class="client-position" data-en="Heritage Sites Development" data-fr="Développement des Sites Patrimoniaux">Heritage Sites Development</p>
+                        <div class="rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-content">
+                    <div class="quote-icon">"</div>
+                    <p data-en="The Voile de la Mariée restoration showcases Falibra Group's ability to handle sensitive heritage projects. They balanced modern construction techniques with respect for our natural landmarks. Outstanding work!" data-fr="La restauration du Voile de la Mariée démontre la capacité de Falibra Group à gérer des projets patrimoniaux sensibles. Ils ont équilibré les techniques de construction modernes avec le respect de nos monuments naturels. Travail exceptionnel!">The Voile de la Mariée restoration showcases Falibra Group's ability to handle sensitive heritage projects. They balanced modern construction techniques with respect for our natural landmarks. Outstanding work!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners-home">
+        <div class="section-header">
+            <h2><span data-en="Our Strategic" data-fr="Notre">Our Strategic</span> <span class="gradient-text" data-en="Partner" data-fr="Partenaire">Partner</span></h2>
+            <p data-en="Building excellence through trusted partnership with industry leaders" data-fr="Construire l'excellence grâce à un partenariat de confiance avec les leaders de l'industrie">Building excellence through trusted partnership with industry leaders</p>
+        </div>
+
+        <div class="partners-grid-home single-partner">
+            <div class="partner-card-home">
+                <div class="partner-logo-container">
+                    <img src="BATMEX-GROUP.svg" alt="Batmex Group Partner" class="partner-logo">
+                </div>
+                <h4>Batmex Group</h4>
+                <p data-en="Strategic Construction Partner" data-fr="Partenaire Stratégique en Construction">Strategic Construction Partner</p>
+            </div>
+        </div>
+
+        <div class="partners-stats">
+            <div class="partner-stat">
+                <div class="stat-number">150+</div>
+                <div class="stat-label" data-en="Joint Projects" data-fr="Projets Conjoints">Joint Projects</div>
+            </div>
+            <div class="partner-stat">
+                <div class="stat-number">10+</div>
+                <div class="stat-label" data-en="Years Partnership" data-fr="Années de Partenariat">Years Partnership</div>
+            </div>
+            <div class="partner-stat">
+                <div class="stat-number">95%</div>
+                <div class="stat-label" data-en="Success Rate" data-fr="Taux de Réussite">Success Rate</div>
+            </div>
         </div>
     </section>
 

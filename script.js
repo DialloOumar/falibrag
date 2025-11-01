@@ -673,11 +673,114 @@ function initLightboxGallery() {
     }
 }
 
+// Animated Statistics Counter
+function animateStatCounters() {
+    const statNumbers = document.querySelectorAll('.stat-number[data-target]');
+
+    if (statNumbers.length === 0) return;
+
+    const animateCount = (element) => {
+        const target = parseInt(element.getAttribute('data-target'));
+        const suffix = element.getAttribute('data-suffix') || '';
+        const duration = 2000; // 2 seconds
+        const startTime = performance.now();
+
+        const updateCounter = (currentTime) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+
+            // Easing function for smooth animation
+            const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+            const current = Math.floor(easeOutQuart * target);
+
+            element.textContent = current + suffix;
+
+            if (progress < 1) {
+                requestAnimationFrame(updateCounter);
+            } else {
+                element.textContent = target + suffix;
+                element.classList.add('counted');
+            }
+        };
+
+        requestAnimationFrame(updateCounter);
+    };
+
+    // Create intersection observer to trigger animation when stats are visible
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                animateCount(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px' });
+
+    // Observe each stat number
+    statNumbers.forEach(stat => {
+        observer.observe(stat);
+
+        // If stat is already visible on page load, animate immediately
+        const rect = stat.getBoundingClientRect();
+        if (rect.top >= 0 && rect.bottom <= window.innerHeight && !stat.classList.contains('counted')) {
+            setTimeout(() => animateCount(stat), 300); // Small delay for effect
+        }
+    });
+}
+
+// Smooth Scroll Animations
+function initScrollAnimations() {
+    // Select all elements that should animate on scroll
+    const sections = document.querySelectorAll('.services-overview, .why-choose-us, .process-timeline, .activities-preview, .featured-projects, .testimonials-home, .partners-home');
+
+    const cards = document.querySelectorAll('.service-preview-card, .why-card, .timeline-step, .activity-card, .project-preview-card, .testimonial-card-home, .partner-card-home');
+
+    const headers = document.querySelectorAll('.section-header');
+
+    // Combine all elements
+    const allElements = [...sections, ...cards, ...headers];
+
+    if (allElements.length === 0) {
+        console.log('No elements found for scroll animation');
+        return;
+    }
+
+    console.log(`Found ${allElements.length} elements to animate`);
+
+    // Create intersection observer
+    const observerOptions = {
+        threshold: 0.05,
+        rootMargin: '0px 0px -10px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Add a small delay before adding the class for smoother effect
+                setTimeout(() => {
+                    entry.target.classList.add('animate-in');
+                }, 50);
+                // Unobserve after animation starts
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Observe all elements
+    allElements.forEach(element => {
+        element.classList.add('animate-on-scroll');
+        observer.observe(element);
+    });
+
+    console.log('Scroll animations initialized');
+}
+
 // Initialize mobile partner cycling, carousel, lightbox, and filters after DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     cycleMobilePartners();
     initActualitiesCarousel();
     initProjectFilters();
     initLightboxGallery();
+    animateStatCounters();
+    initScrollAnimations();
 });
 window.addEventListener('resize', cycleMobilePartners);
