@@ -280,54 +280,141 @@ nav {
     z-index: 1;
 }
 
-/* Hide video on mobile for performance */
+/* Mobile hero adjustments - Clean Professional Design */
 @media (max-width: 768px) {
-    .hero-video-background {
+    /* Mobile hero with video throughout */
+    .hero {
+        min-height: 100vh;
+        padding: 0;
+        margin-top: 80px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    /* Video covers full hero on mobile */
+    .hero-video {
+        top: 0;
+        height: 100%;
+    }
+
+    /* Strong dark overlay for text readability */
+    .video-overlay {
+        background: linear-gradient(
+            135deg,
+            rgba(0, 0, 0, 0.75) 0%,
+            rgba(26, 26, 26, 0.7) 50%,
+            rgba(0, 0, 0, 0.8) 100%
+        );
+    }
+
+    /* Content starts from top with proper padding to clear nav */
+    .hero-content {
+        flex-direction: column;
+        gap: 1.2rem;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 8rem 1.5rem 3rem;
+        width: 100%;
+        margin: 0;
+        position: relative;
+        z-index: 2;
+    }
+
+    /* Text section */
+    .hero-text {
+        text-align: center;
+        max-width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    /* Heading - compact and readable */
+    .hero-text h1 {
+        color: #ffffff !important;
+        text-shadow: 2px 2px 15px rgba(0, 0, 0, 1),
+                     0 0 40px rgba(0, 0, 0, 0.9) !important;
+        font-size: 1.4rem !important;
+        line-height: 1.3 !important;
+        margin-bottom: 0.8rem !important;
+        padding: 0 !important;
+        margin-top: 0 !important;
+        font-weight: 900 !important;
+    }
+
+    /* Paragraph - readable size */
+    .hero-text p {
+        color: #f5f5f5 !important;
+        text-shadow: 1px 1px 12px rgba(0, 0, 0, 1),
+                     0 0 20px rgba(0, 0, 0, 0.8) !important;
+        font-size: 0.9rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 1rem !important;
+    }
+
+    /* Button section */
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+        gap: 0;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-buttons .btn-primary {
         display: none;
     }
 
-    /* Add lighter background overlay on mobile for better readability */
-    .hero {
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.98) 100%),
-                    url('https://images.unsplash.com/photo-1541976590-713941681591?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover;
+    .hero-buttons .btn-secondary {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        padding: 1rem 1.5rem;
+        font-size: 0.95rem;
+        font-weight: 600;
     }
 
-    /* Mobile text readability - change to dark text */
-    .hero-text h1 {
-        color: #1a1a1a !important;
-        text-shadow: none !important;
-    }
-
-    .hero-text p {
-        color: #555555 !important;
-        text-shadow: none !important;
-    }
-
-    /* Mobile stat cards - lighter background */
-    .stat-card {
-        background: rgba(255, 255, 255, 0.95) !important;
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(0, 0, 0, 0.1) !important;
-        padding: 1.2rem !important;
-    }
-
-    .stat-card:hover {
-        background: rgba(255, 107, 53, 0.1) !important;
-        border-color: rgba(255, 107, 53, 0.3) !important;
-    }
-
-    .stat-number {
-        font-size: 1.5rem !important;
-    }
-
-    .stat-label {
-        color: #666666 !important;
-        text-shadow: none !important;
-        font-size: 0.85rem !important;
+    /* Stats section - compact */
+    .hero-visual {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
     }
 
     .visual-grid {
-        gap: 1rem;
+        gap: 0.6rem;
+        max-width: 100%;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Stat cards with strong glass effect - compact size */
+    .stat-card {
+        background: rgba(0, 0, 0, 0.5) !important;
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        padding: 0.7rem 0.5rem !important;
+    }
+
+    .stat-card:hover {
+        background: rgba(255, 107, 53, 0.4) !important;
+        border-color: rgba(255, 107, 53, 0.7) !important;
+    }
+
+    .stat-number {
+        font-size: 1.3rem !important;
+        filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 1));
+        margin-bottom: 0.2rem !important;
+    }
+
+    .stat-label {
+        color: #f5f5f5 !important;
+        text-shadow: 1px 1px 6px rgba(0, 0, 0, 1) !important;
+        font-size: 0.7rem !important;
+        line-height: 1.2 !important;
+    }
+
+    /* Gradient text visibility */
+    .gradient-text {
+        filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 1));
     }
 }
 
@@ -399,41 +486,48 @@ html[lang="en"] .hero-text h1,
 .hero-buttons {
     display: flex;
     gap: 1.5rem;
+    margin-bottom: 2rem;
     animation: slideInLeft 0.8s ease-out 0.4s backwards;
 }
 
 .btn-primary {
-    padding: 1rem 2.5rem;
+    padding: 0.8rem 1.8rem;
     background: linear-gradient(135deg, #2ecc71, #27ae60);
     border: none;
     border-radius: 50px;
     color: #333333;
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
     transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
     transform: translateY(-3px);
     box-shadow: 0 15px 40px rgba(255, 107, 53, 0.5);
+    text-decoration: none;
 }
 
 .btn-secondary {
-    padding: 1rem 2.5rem;
+    padding: 0.8rem 1.8rem;
     background: transparent;
     border: 2px solid #2ecc71;
     border-radius: 50px;
     color: #333333;
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
     transition: all 0.3s ease;
 }
 
 .btn-secondary:hover {
     background: rgba(255, 107, 53, 0.1);
     transform: translateY(-3px);
+    text-decoration: none;
 }
 
 .hero-visual {
