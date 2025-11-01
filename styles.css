@@ -317,7 +317,7 @@ nav {
     }
 
     .stat-number {
-        font-size: 1.8rem !important;
+        font-size: 1.5rem !important;
     }
 
     .stat-label {
@@ -359,7 +359,7 @@ nav {
 }
 
 .hero-text h1 {
-    font-size: 4rem;
+    font-size: 2.8rem;
     font-weight: 900;
     line-height: 1.2;
     margin-bottom: 1.5rem;
@@ -372,7 +372,7 @@ nav {
 /* Reduce font size for English version when content is longer */
 html[lang="en"] .hero-text h1,
 .hero-text h1:not([data-lang="fr"]) {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
 }
 
 @keyframes slideInLeft {
@@ -388,7 +388,7 @@ html[lang="en"] .hero-text h1,
 }
 
 .hero-text p {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     color: #f0f0f0;
     margin-bottom: 2.5rem;
     line-height: 1.6;
@@ -475,7 +475,7 @@ html[lang="en"] .hero-text h1,
 }
 
 .stat-number {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 800;
     background: linear-gradient(135deg, #2ecc71, #27ae60);
     -webkit-background-clip: text;
@@ -514,14 +514,14 @@ html[lang="en"] .hero-text h1,
 }
 
 .section-header h2 {
-    font-size: 3rem;
+    font-size: 2.2rem;
     font-weight: 800;
     margin-bottom: 1rem;
 }
 
 .section-header p {
     color: #666666;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .services-grid {
@@ -753,11 +753,11 @@ footer p {
     }
 
     .section-header h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     .section-header p {
-        font-size: 1rem;
+        font-size: 0.95rem;
     }
 
     .services-grid {
@@ -4351,7 +4351,7 @@ footer p {
 }
 
 .why-card h3 {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: 800;
     color: #1a1a1a;
     margin-bottom: 1rem;
@@ -4536,7 +4536,7 @@ footer p {
 }
 
 .step-content h3 {
-    font-size: 1.3rem;
+    font-size: 1.15rem;
     font-weight: 800;
     color: #1a1a1a;
     margin-bottom: 1rem;
@@ -4748,7 +4748,7 @@ footer p {
 }
 
 .activity-content h3 {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: 800;
     color: #1a1a1a;
     margin-bottom: 1rem;

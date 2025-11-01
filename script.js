@@ -326,73 +326,86 @@ function initActualitiesCarousel() {
     const indicators = document.querySelectorAll('.indicator');
     const prevBtn = document.getElementById('carouselPrev');
     const nextBtn = document.getElementById('carouselNext');
-    
+
+    // Exit if required elements don't exist
+    if (!items.length || !prevBtn || !nextBtn) return;
+
     let currentSlide = 0;
     let autoSlideInterval;
-    
+
     function updateCarousel() {
         // Remove active classes
         items.forEach(item => {
             item.classList.remove('active', 'prev');
         });
-        indicators.forEach(indicator => {
-            indicator.classList.remove('active');
-        });
-        
+        if (indicators.length > 0) {
+            indicators.forEach(indicator => {
+                indicator.classList.remove('active');
+            });
+        }
+
         // Add active class to current slide
         items[currentSlide].classList.add('active');
-        indicators[currentSlide].classList.add('active');
-        
+        if (indicators[currentSlide]) {
+            indicators[currentSlide].classList.add('active');
+        }
+
         // Add prev class to previous slide for animation
         const prevSlide = currentSlide === 0 ? items.length - 1 : currentSlide - 1;
         items[prevSlide].classList.add('prev');
     }
-    
+
     function nextSlide() {
         currentSlide = (currentSlide + 1) % items.length;
         updateCarousel();
     }
-    
+
     function prevSlide() {
         currentSlide = currentSlide === 0 ? items.length - 1 : currentSlide - 1;
         updateCarousel();
     }
-    
+
     function goToSlide(slideIndex) {
         currentSlide = slideIndex;
         updateCarousel();
     }
-    
+
     function startAutoSlide() {
         autoSlideInterval = setInterval(nextSlide, 6000); // Change every 6 seconds
     }
-    
+
     function stopAutoSlide() {
         clearInterval(autoSlideInterval);
     }
-    
-    // Event listeners
-    nextBtn.addEventListener('click', () => {
-        nextSlide();
-        stopAutoSlide();
-        startAutoSlide(); // Restart auto-slide
-    });
-    
-    prevBtn.addEventListener('click', () => {
-        prevSlide();
-        stopAutoSlide();
-        startAutoSlide(); // Restart auto-slide
-    });
-    
-    // Indicator clicks
-    indicators.forEach((indicator, index) => {
-        indicator.addEventListener('click', () => {
-            goToSlide(index);
+
+    // Event listeners - all safe now
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
             stopAutoSlide();
             startAutoSlide(); // Restart auto-slide
         });
-    });
-    
+    }
+
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+            stopAutoSlide();
+            startAutoSlide(); // Restart auto-slide
+        });
+    }
+
+    // Indicator clicks
+    if (indicators.length > 0) {
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                goToSlide(index);
+                stopAutoSlide();
+                startAutoSlide(); // Restart auto-slide
+            });
+        });
+    }
+
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowLeft') {
@@ -405,38 +418,40 @@ function initActualitiesCarousel() {
             startAutoSlide();
         }
     });
-    
+
     // Pause auto-slide on hover
-    carousel.addEventListener('mouseenter', stopAutoSlide);
-    carousel.addEventListener('mouseleave', startAutoSlide);
-    
-    // Touch/swipe support for mobile
-    let touchStartX = 0;
-    let touchEndX = 0;
-    
-    carousel.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-    });
-    
-    carousel.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-    });
-    
-    function handleSwipe() {
-        const swipeThreshold = 50;
-        const diff = touchStartX - touchEndX;
-        
-        if (Math.abs(diff) > swipeThreshold) {
-            if (diff > 0) {
-                // Swipe left - next slide
-                nextSlide();
-            } else {
-                // Swipe right - prev slide
-                prevSlide();
+    if (carousel) {
+        carousel.addEventListener('mouseenter', stopAutoSlide);
+        carousel.addEventListener('mouseleave', startAutoSlide);
+
+        // Touch/swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        carousel.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        carousel.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // Swipe left - next slide
+                    nextSlide();
+                } else {
+                    // Swipe right - prev slide
+                    prevSlide();
+                }
+                stopAutoSlide();
+                startAutoSlide();
             }
-            stopAutoSlide();
-            startAutoSlide();
         }
     }
     
@@ -492,6 +507,12 @@ function initLightboxGallery() {
     const prevBtn = document.getElementById('lightboxPrev');
     const nextBtn = document.getElementById('lightboxNext');
     const thumbnailGrid = document.getElementById('lightboxThumbnails');
+
+    // Exit if lightbox elements don't exist on this page
+    if (!modal || !closeBtn || !prevBtn || !nextBtn) {
+        console.log('Lightbox elements not found, skipping initialization');
+        return;
+    }
 
     console.log('Modal element:', modal);
     console.log('Gallery items found:', document.querySelectorAll('.gallery-item').length);
