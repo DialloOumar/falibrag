@@ -10,7 +10,7 @@ Projects/
 ├── government_printing_press/      ✓ 6 images
 ├── voile_de_la_mariee/             ✓ 5 images
 ├── donka_orthopedic/
-├── ors_siguiri/
+├── ors_siguiri/                    ✓ 1 image
 └── ast_kankan/
 ```
 
@@ -64,7 +64,7 @@ Don't forget to update the image count overlay:
 | Government Printing Press | 6 | ✓ Complete |
 | Voile de la Mariée | 5 | ✓ Complete |
 | Donka Orthopedic Center | 0 | Placeholder |
-| ORS Siguiri | 0 | Placeholder |
+| ORS Siguiri | 1 | ✓ In Progress |
 | AST Kankan | 0 | Placeholder |
 
 ## Notes
