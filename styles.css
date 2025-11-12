@@ -468,10 +468,8 @@ html[lang="en"] .hero-text h2,
 }
 
 .gradient-text {
-    background: linear-gradient(135deg, #2ecc71, #27ae60, #1abc9c);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #ffffff;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
 }
 
 .hero-text p {
