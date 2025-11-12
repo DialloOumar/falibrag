@@ -1263,60 +1263,154 @@ footer p {
     }
     
     /* Contact Page Mobile Styles */
+    .contact {
+        padding: 2rem 5%;
+    }
+
     .contact-container {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
-    
+
     .contact-info,
     .contact-form {
-        padding: 2rem;
+        padding: 1.5rem;
     }
-    
+
     .contact-info h2,
     .contact-form h2 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
     }
-    
+
+    .contact-info > p {
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+    }
+
     .form-row {
         grid-template-columns: 1fr;
         gap: 1rem;
     }
-    
+
     .contact-item {
         padding: 1rem;
         margin-bottom: 1rem;
+        flex-direction: row;
+        gap: 0.8rem;
     }
-    
+
     .contact-icon {
         width: 40px;
         height: 40px;
         font-size: 1.2rem;
     }
+
+    .contact-text h3 {
+        font-size: 1rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .contact-text p {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+
+    .form-group label {
+        font-size: 0.85rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 0.85rem;
+        font-size: 0.95rem;
+    }
+
+    .checkbox-label {
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+
+    .checkbox-label input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+    }
+
+    .contact-form .btn-primary {
+        width: 100%;
+        padding: 1rem 2rem;
+        font-size: 1rem;
+    }
+
+    .social-contact h3 {
+        font-size: 1.1rem;
+    }
+
+    .social-contact .social-link {
+        width: 40px;
+        height: 40px;
+    }
     
+    .quick-contact {
+        padding: 2rem 5%;
+    }
+
     .quick-contact-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+        margin-top: 1.5rem;
     }
-    
+
     .quick-contact-card {
         padding: 1.5rem;
     }
-    
+
     .quick-contact-card h3 {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .quick-contact-card p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .quick-contact-icon {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .quick-contact-card .btn-secondary {
+        font-size: 0.9rem;
+        padding: 0.75rem 1.5rem;
+        width: 100%;
+        margin-top: 1rem;
     }
     
+    .map-section {
+        padding: 2rem 5%;
+    }
+
     .map-placeholder {
-        padding: 2rem;
+        padding: 1.5rem;
     }
-    
+
     .map-info h3 {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem;
     }
-    
-    .checkbox-label {
-        font-size: 0.85rem;
+
+    .map-info p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .map-directions .btn-primary {
+        font-size: 0.9rem;
+        padding: 0.75rem 1.5rem;
+        width: 100%;
     }
 }
 
@@ -2930,7 +3024,8 @@ footer p {
     color: #2ecc71;
 }
 
-/* Contact Section Styles */
+/* Contact Section Styles - UNUSED - COMMENTED OUT TO FIX MOBILE FORM VISIBILITY */
+/*
 .contact {
     padding: 2rem 5%;
     background: linear-gradient(135deg, #e9ecef 0%, #f8f9fa 50%, #e9ecef 100%);
@@ -3057,6 +3152,7 @@ footer p {
     color: #333333;
     padding: 0.5rem;
 }
+*/
 
 /* ===== MULTI-PAGE LAYOUT STYLES ===== */
 
@@ -3890,8 +3986,18 @@ footer p {
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
+    .page-hero {
+        padding: 6rem 5% 3rem;
+    }
+
     .page-hero-content h2 {
-        font-size: 2.5rem;
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+
+    .page-hero-content p {
+        font-size: 1rem;
+        line-height: 1.6;
     }
     
     .story-content {
